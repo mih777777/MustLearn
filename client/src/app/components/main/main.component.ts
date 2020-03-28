@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges, DoCheck } from '@angular/core';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { Todo } from '../../interfaces'
 import { Router } from '@angular/router';
@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements
+  OnInit,
+  OnChanges,
+  DoCheck 
+{
 
   arrayId = []
   todos: Todo[] = []
@@ -18,11 +22,20 @@ export class MainComponent implements OnInit {
   constructor(
     private todoService: TodoServiceService,
     private router: Router
-  ) { }
+  ) {console.log('Constructor') }
+
+  ngOnChanges(changes: SimpleChanges){
+    console.log('ngOnChanges', changes)
+  }
 
   ngOnInit(): void {
     
     this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+    console.log('ngOnInit')
+  }
+
+  ngDoCheck(){
+
   }
 
   inpSelect(event){

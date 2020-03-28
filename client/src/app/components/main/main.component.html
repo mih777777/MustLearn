@@ -14,9 +14,6 @@
             <option>General</option>
         </select>
         </div>
-
-        
-
         <div>
           <h3 align="center"> MustLearn </h3><br>
           <small>Сейчас выводится категория: 
@@ -35,26 +32,37 @@
             <th scope="col">Category</th>
           </tr>
         </thead>
-        <tbody *ngFor="let todo of todos; let i = index;">
-          <tr>
-            <th scope="row">{{ i + 1 }}</th>
-            
-            <td><a [routerLink]="['/todo', todo._id]">{{ todo.title}}</a></td>
-            
-           
-            <td>
-                <div >
-                    <a [routerLink]="['/update', todo._id]" class="edit">edit  </a>
-                    <a 
-                      href="" 
-                      onclick="event.preventDefault()" 
-                      (click)="removeTodo(todo._id)" 
-                      class="delete">delete  
-                    </a>
-                </div>   
-            </td>
-            <td>{{ todo.category }}</td> 
-          </tr>
-        </tbody>
-      </table>   
+        
+          <tbody *ngFor="let todo of todos; let i = index;" >
+            <tr>
+              <th scope="row">{{ i + 1 }}</th>
+              
+              <td>
+                <div>
+                  <div class="block">
+                    <a [routerLink]="['/todo', todo._id]">{{ todo.title}}</a>
+                  </div>
+                  <div class="block div-right" *ngIf="todo.description == 0">
+                    no content
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                  <div >
+                      <a [routerLink]="['/update', todo._id]" class="edit">edit  </a>
+                      <a 
+                        href="" 
+                        onclick="event.preventDefault()" 
+                        (click)="removeTodo(todo._id)" 
+                        class="delete">delete  
+                      </a>
+                  </div>   
+              </td>
+              <td>{{ todo.category }}</td> 
+            </tr>
+          </tbody>
+        
+      </table>  
 </div>
+
