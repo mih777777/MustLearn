@@ -1,0 +1,51 @@
+<div class="container">
+    <div>
+        <br>
+        <a routerLink="/create">Добавить задание</a>
+        <div class="right">
+          <select 
+            class="form-control" 
+            (input)="inpSelect($event)" 
+            [(ngModel)]="catName"
+          >
+            <option selected="selected">all</option>
+            <option>Angular</option>
+            <option>TypeScript</option>
+        </select>
+        </div>
+
+        <h3 align="center"> MustLearn </h3><br>
+    </div>
+    
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" >Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Category</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let todo of todos; let i = index;">
+          <tr>
+            <th scope="row">{{ i + 1 }}</th>
+            
+            <td>{{ todo.title}}</td>
+            <td>{{ todo.description }}</td>
+            <td>
+                <div align="center">
+                    <a [routerLink]="['/update', todo._id]" class="edit">edit  </a>
+                    <a 
+                      href="" 
+                      onclick="event.preventDefault()" 
+                      (click)="removeTodo(todo._id)" 
+                      class="delete">delete  
+                    </a>
+                </div>   
+            </td>
+            <td>{{ todo.category }}</td> 
+          </tr>
+        </tbody>
+      </table>   
+</div>
