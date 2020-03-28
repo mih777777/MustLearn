@@ -9,7 +9,7 @@ const todoSchema = new Schema({
     },    
     description: {
         type: String,
-        required: 'Enter a description of todo'
+        
     },
     category: {
         type: String,

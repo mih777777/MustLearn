@@ -11,10 +11,19 @@
             <option selected="selected">all</option>
             <option>Angular</option>
             <option>TypeScript</option>
+            <option>General</option>
         </select>
         </div>
 
-        <h3 align="center"> MustLearn </h3><br>
+        
+
+        <div>
+          <h3 align="center"> MustLearn </h3><br>
+          <small>Сейчас выводится категория: 
+            <strong style="color: crimson;">{{catName}}</strong>
+            всего: {{quantity}} 
+          </small>
+        </div>
     </div>
     
     <table class="table table-bordered">
@@ -22,7 +31,6 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col" >Title</th>
-            <th scope="col">Description</th>
             <th scope="col">Actions</th>
             <th scope="col">Category</th>
           </tr>
@@ -31,10 +39,11 @@
           <tr>
             <th scope="row">{{ i + 1 }}</th>
             
-            <td>{{ todo.title}}</td>
-            <td>{{ todo.description }}</td>
+            <td><a [routerLink]="['/todo', todo._id]">{{ todo.title}}</a></td>
+            
+           
             <td>
-                <div align="center">
+                <div >
                     <a [routerLink]="['/update', todo._id]" class="edit">edit  </a>
                     <a 
                       href="" 

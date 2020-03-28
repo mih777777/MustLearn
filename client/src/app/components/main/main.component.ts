@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
   arrayId = []
   todos: Todo[] = []
   catName: string = 'all'
+  quantity: number
 
   constructor(
     private todoService: TodoServiceService,
@@ -33,6 +34,7 @@ export class MainComponent implements OnInit {
     
     this.todoService.getAllByCategory(catName)
       .subscribe(result => {
+        this.quantity = result.length
         this.todos = result
       })
   }
@@ -40,6 +42,7 @@ export class MainComponent implements OnInit {
   fetchAllTodos(){
     this.todoService.getAll()
       .subscribe(result => {
+        this.quantity = result.length
         this.todos = result
       })
   }

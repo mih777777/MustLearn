@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CreateTodoComponent } from './components/create-todo/create-todo.component';
 import { UpdateTodoComponent } from './components/update-todo/update-todo.component';
 import { MainComponent } from './components/main/main.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateTodoComponent,
     UpdateTodoComponent,
-    MainComponent
+    MainComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
     <form [formGroup]="form" (ngSubmit)="createTodo()">
         <div class="form-group">
           <label for="exampleFormControlInput1">Название задания</label>
-          <input 
+          *<input 
             type="email" 
             class="form-control" 
             formControlName = "title" 
@@ -14,12 +14,13 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Категория</label>
-          <select 
+          *<select 
             class="form-control" 
             formControlName = "category"
           >
           <option>Angular</option>
           <option>TypeScript</option>
+          <option>General</option>
           </select>
         </div>
         <div class="form-group">
