@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class TodoServiceService {
 
   catName: string = 'all'
+  currentId: string 
 
   constructor(private http: HttpClient) { }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 
 @Component({
@@ -11,6 +11,8 @@ export class TodoComponent implements OnInit {
   
   post: any = {}
 
+  currentId: string
+
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoServiceService
@@ -21,6 +23,8 @@ export class TodoComponent implements OnInit {
       this.todoService.getById(params.id)
         .subscribe((post) => {
           this.post = post
+          this.todoService.currentId = params.id
+          this.currentId = this.todoService.currentId
         })
     })
   }
