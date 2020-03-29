@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 })
 export class TodoServiceService {
 
+  catName: string = 'all'
+
   constructor(private http: HttpClient) { }
 
   create(todo: Todo): Observable<Todo> {

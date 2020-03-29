@@ -4,7 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { Todo } from 'src/app/interfaces';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-update-todo',
@@ -15,6 +15,7 @@ export class UpdateTodoComponent implements OnInit {
 
   todo: Todo
   form: FormGroup
+  CurrentCatName = this.todoService.catName
 
   constructor(
     private todoService: TodoServiceService,
@@ -37,8 +38,9 @@ export class UpdateTodoComponent implements OnInit {
           title: new FormControl(todo.title),
           category: new FormControl(todo.category),
           description: new FormControl(todo.description)
-
+          
         })
+        console.log(this.todoService.catName)
     })
   }
 
@@ -54,6 +56,7 @@ export class UpdateTodoComponent implements OnInit {
     }).subscribe(() => {
       this.todo = this.form.value
       this.form.reset()
+      this.todoService.catName = this.CurrentCatName
       this.router.navigate(['/'])
     })
   }

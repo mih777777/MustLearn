@@ -16,7 +16,8 @@ export class MainComponent implements
 
   arrayId = []
   todos: Todo[] = []
-  catName: string = 'all'
+  catName = this.todoService.catName
+  
   quantity: number
 
   constructor(
@@ -30,7 +31,7 @@ export class MainComponent implements
 
   ngOnInit(): void {
     
-    this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+    this.todoService.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.todoService.catName)
     console.log('ngOnInit')
   }
 
@@ -39,8 +40,8 @@ export class MainComponent implements
   }
 
   inpSelect(event){
-    this.catName = event.target.value
-    this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+    this.todoService.catName = event.target.value
+    this.todoService.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.todoService.catName)
   }
 
   fetchTodosByCategory(catName: string) {
@@ -63,7 +64,7 @@ export class MainComponent implements
   removeTodo(id: string): void{
     this.todoService.delete(id)
       .subscribe(() => {
-        this.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.catName)
+        this.todoService.catName == 'all' ? this.fetchAllTodos() : this.fetchTodosByCategory(this.todoService.catName)
       }) 
     
   }
