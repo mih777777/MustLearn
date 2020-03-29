@@ -15,7 +15,6 @@ export class UpdateTodoComponent implements OnInit {
 
   todo: Todo
   form: FormGroup
-  CurrentCatName = this.todoService.catName
 
   constructor(
     private todoService: TodoServiceService,
@@ -56,7 +55,6 @@ export class UpdateTodoComponent implements OnInit {
     }).subscribe(() => {
       this.todo = this.form.value
       this.form.reset()
-      this.todoService.catName = this.CurrentCatName
       this.router.navigate(['/'])
     })
   }

@@ -1,7 +1,6 @@
 import { Component, OnInit, SimpleChanges, OnChanges, DoCheck } from '@angular/core';
 import { TodoServiceService } from 'src/app/services/todo-service.service';
 import { Todo } from '../../interfaces'
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -21,8 +20,7 @@ export class MainComponent implements
   quantity: number
 
   constructor(
-    private todoService: TodoServiceService,
-    private router: Router
+    private todoService: TodoServiceService
   ) {console.log('Constructor') }
 
   ngOnChanges(changes: SimpleChanges){
